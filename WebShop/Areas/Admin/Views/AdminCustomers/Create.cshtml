@@ -1,0 +1,130 @@
+﻿@model WebShop.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h2 class="header-title">Thêm Khách hàng</h2>
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminOrders" asp-action="Index">Danh khách hàng</a>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="modal-body">
+        <div class="card" style="background-color: #FAEAEA">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FullName" class="control-label">Họ và Tên</label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Birthday" class="control-label">Ngày sinh</label>
+                                <input asp-for="Birthday" class="form-control" />
+                                <span asp-validation-for="Birthday" class="text-danger"></span>
+                            </div>
+                        </div>
+@*                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Avatar" class="control-label"></label>
+                                <input asp-for="Avatar" class="form-control" />
+                                <span asp-validation-for="Avatar" class="text-danger"></span>
+                            </div>
+                        </div>*@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Address" class="control-label">Địa chỉ</label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label">Email</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Phone" class="control-label">Số điện thoại</label>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                     
+@*                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LocationId" class="control-label"></label>
+                                <input asp-for="LocationId" class="form-control" />
+                                <span asp-validation-for="LocationId" class="text-danger"></span>
+                            </div>
+                        </div>*@
+@*                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CreateDate" class="control-label"></label>
+                                <input asp-for="CreateDate" class="form-control" />
+                                <span asp-validation-for="CreateDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>*@
+@*                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Salt" class="control-label"></label>
+                                <input asp-for="Salt" class="form-control" />
+                                <span asp-validation-for="Salt" class="text-danger"></span>
+                            </div>
+                        </div>*@
+@*                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastLogin" class="control-label"></label>
+                                <input asp-for="LastLogin" class="form-control" />
+                                <span asp-validation-for="LastLogin" class="text-danger"></span>
+                            </div>
+                        </div>*@
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Active" class="control-label">Kích hoạt</label>
+                            <input asp-for="Active" class="form-control" />
+                            <span asp-validation-for="Active" class="text-danger"></span>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*<input type="submit" value="Create" class="btn btn-primary" />*@
+                            <button type="submit" class="btn btn-info btn-tone m-r-5"><i class="far fa-save m-r-5"></i>Lưu</button>
+                            |
+                            <a class="btn btn-warning btn-tone m-r-5 " asp-action="Index"><i class="fas fa-undo m-r-5"></i>Quay lại</a>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+

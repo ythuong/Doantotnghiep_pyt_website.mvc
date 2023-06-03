@@ -1,0 +1,77 @@
+﻿@model WebShop.Models.TinTuc
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminTinTucs" asp-action="Index">Danh sách tin tức</a>
+            <span class="breadcrumb-item active">Thông tin tin tức</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin tin tức: @Model.Title</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.PostId</td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu đề:</td>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả ngắn:</td>
+                        <td>@Model.Scontents</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả:</td>
+                        <td>@Model.Contents</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày tạo:</td>
+                        <td>@Model.CreatedDate</td>
+                    </tr>
+                    <tr>
+                        <td>MetaKey:</td>
+                        <td>@Model.MetaKey</td>
+                    </tr>
+                    <tr>
+                        <td>MetaDesc:</td>
+                        <td>@Model.MetaDesc</td>
+                    </tr>
+
+                    @*<tr>
+                    <td>Tags:</td>
+                    <td>@Model.Tags</td>
+                    </tr>*@
+                    <tr>
+                        <td>Ảnh:</td>
+                        <td>
+                            <img width="200px" ; height="200px" src="~/images/news/@Model.Thumb" alt="@Model.Title" />
+                        </td>
+                    </tr>
+                    @*<tr>
+                    <td>
+                    <a asp-controller="AdminTinTucs" asp-action="Index" class="btn btn-danger">
+                    <i class="fa fa-chevron-left">&nbsp;</i>Quay lại
+                    </a>
+                    </td>
+                    </tr>*@
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="text-left">
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fas fa-undo m-r-5 fa-lg"></i>Quay lại</a>
+</div>

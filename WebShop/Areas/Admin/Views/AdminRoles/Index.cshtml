@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebShop.Models.Role>
+@{
+    int index = 1;
+}
+@{
+    ViewData["Title"] = "Quản lý quyền truy cập";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            @*<a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Danh sách tài khoản</a>*@
+            <span class="breadcrumb-item active">Danh sách quyền truy cập</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body" style="background-color:#FFF0F5">
+        <h2 class="text-center">Danh sách quyền truy cập</h2>
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+            </div>
+            <div class="col-lg-4 text-right">
+                <a class="btn btn-success" asp-controller="AdminRoles" asp-action="Create"> <i class="far fa-plus-square m-r-5 fa-lg"></i><span>Thêm quyền</span></a>
+
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@index</th>
+                                <td>@item.RoleName</td>
+                                <td>@item.Description</td>
+                                <td>
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Details" asp-route-id="@item.RoleId"><i class="far fa-eye m-r-5 fa-lg"></i>Xem</a>
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Edit" asp-route-id="@item.RoleId"><i class="far fa-edit m-r-5 fa-lg"></i>Sửa</a>
+                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Delete" asp-route-id="@item.RoleId"><i class="far fa-trash-alt m-r-5 fa-lg"></i>Xóa</a>
+                                </td>
+                            </tr>
+                            index = index + 1;
+
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

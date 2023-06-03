@@ -1,0 +1,84 @@
+﻿@using PagedList.Core.Mvc;
+
+@model PagedList.Core.IPagedList<WebShop.Models.Customer>
+@{
+    int index = 1;
+}
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách khách hàng" + CurrentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            @*<a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Danh sách tài khoản</a>*@
+            <span class="breadcrumb-item active">Danh sách khách hàng: Trang @CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card" style="background-color:#FFF0F5">
+    <div class="card-body">
+        <h2 class="text-center">Danh sách khách hàng</h2>
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+            </div>
+            <div class="col-lg-4 text-right">
+                <a class="btn btn-success " asp-controller="AdminCustomers" asp-action="Create"> <i class="far fa-plus-square m-r-5 fa-lg"></i><span>Thêm khách hàng</span></a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+
+                        <th>STT</th>
+                        <th>Họ và tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Chức năng</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @index
+                                </td>
+                                <td>
+                                    <p>@item.FullName</p>
+                                    <p>@item.Phone</p>
+                                    <p>@item.Email</p>
+                                </td>
+
+
+                                <td>@item.Address</td>
+                                @*<td>@item.Location.Name</td>*@
+                                <td>
+                                    <a class="btn btn-info btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Details" asp-route-id="@item.CustomerId"><i class="far fa-eye m-r-5 fa-lg"></i>Xem</a>
+                                    <a class="btn btn-warning btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Edit" asp-route-id="@item.CustomerId"><i class="far fa-edit m-r-5 fa-lg"></i>Sửa</a>
+                                    @*<a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>*@
+                                </td>
+                            </tr>
+                            index = index + 1;
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="page-container" list="@Model" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

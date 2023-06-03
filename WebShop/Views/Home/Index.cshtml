@@ -1,0 +1,270 @@
+﻿@model WebShop.ModelViews.HomeViewVM
+@{
+    ViewData["Title"] = "Home Page";
+    List<Product> allProduct = ViewBag.AllProducts;
+}
+
+<!-- Begin Slider Area -->
+<!-- Main Slider -->
+<!-- Slider Area End Here -->
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <div class="hero__items set-bg" data-setbg="assets/img/hero/baner3.png">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6>Summer Collection</h6>
+                            <h2>Bộ sưu tập mùa hè năm 2023</h2>
+                            <pc class="text-white">
+                                Một nhãn hiệu chuyên nghiệp tạo ra những thứ thiết yếu sang trọng. 
+                                Được chế tác một cách có đạo đức với cam kết vững chắc về chất lượng vượt trội.
+                            </pc>
+                            <ping></ping>
+                            <a href="#" class="primary-btn">Mua ngay <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero__items set-bg" data-setbg="assets/img/hero/Baner2.png">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6>Summer Collection</h6>
+                            <h2>Bộ sưu tập thu đông 2023</h2>
+                            <p class ="text-white">
+                                Một nhãn hiệu chuyên nghiệp tạo ra những thứ thiết yếu sang trọng. 
+                                Được chế tác một cách có đạo đức với cam kết vững chắc về chất lượng vượt trội.
+                            </p>
+                            <a href="#" class="primary-btn">Mua ngày <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Banner Section Begin -->
+<section class="banner spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 offset-lg-4">
+                <div class="banner__item">
+                    <div class="banner__item__pic">
+                        <img style="width:500px; height:500px" src="assets/img/banner/a1.jpg" alt="">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Giày 2023</h2>
+                        <a href="#">Mua ngày</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="banner__item banner__item--middle">
+                    <div class="banner__item__pic">
+                        <img style="width:500px;height:500px" src="assets/img/banner/dep2.jpg" alt="">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Phụ kiện</h2>
+                        <a href="#">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="banner__item banner__item--last">
+                    <div class="banner__item__pic">
+                        <img style="width:500px; height:500px" src="assets/img/banner/ss1.jpg" alt="">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Bộ sưu tập quần áo 2023</h2>
+                        <a href="#">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+<!-- Begin Shipping Area -->
+<!-- Shipping Area End Here -->
+<!-- Begin Product Area -->
+<div class="product-area section-space-top-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">Tất cả sản phẩm</li>
+                    @foreach (var item in Model.Products)
+                    {
+                        <li><a href="/@item.category.CatName" style="color: black">@item.category.CatName</a></li>
+
+                    }
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="all-items" role="tabpanel" aria-labelledby="all-items-tab">
+                        @await Html.PartialAsync("ListProduct", allProduct)
+                    </div>
+
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="tab-pane fade" id="@item.category.Alias" role="tabpanel" aria-labelledby="fresh-fruits-tab">
+                            @await Html.PartialAsync("ListProduct", item.lsProducts)
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Area End Here -->
+<!-- Begin Product Area -->
+<!-- Begin Banner Area -->
+<!-- Banner Area End Here -->
+<!-- Begin Product Area -->
+<!-- Product Area End Here -->
+<!-- Categories Section Begin -->
+<section class="categories spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="categories__text">
+                    <h2>Quần áo New <br /> <span>Bộ sưu tập giày</span> <br /> Phụ kiện</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="categories__hot__deal">
+                    <img src="~/assets/img/baner4.png" />
+                    <div class="hot__deal__sticker">
+                        <span>Sale Off</span>
+                        <h5>$99</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1">
+                <div class="categories__deal__countdown">
+                    <span>Giao dịch trong tuần</span>
+                    <h2>Giày Adidas Ultra Boost 4.0 Grey Four</h2>
+                    <div class="categories__deal__countdown__timer" id="countdown">
+                        <div class="cd-item">
+                            <span>3</span>
+                            <p>Days</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>1</span>
+                            <p>Hours</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>50</span>
+                            <p>Minutes</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>18</span>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                    <a href="#" class="primary-btn">Mua ngày</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="instagram__pic">
+                    <div class="instagram__pic__item set-bg" data-setbg="assets/img/instagram/t3.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="assets/img/instagram/eqt2.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="assets/img/instagram/na2.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="assets/img/instagram/instagram-4.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="assets/img/instagram/nu2.jpg"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="assets/img/instagram/a1.jpg"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="instagram__text">
+                    <h2>MẬT Xinh</h2>
+                    <h4>
+                        Đặt sự hài lòng của khách hàng là ưu tiên số 1 trong mọi suy nghĩ hành động của mình” 
+                        là sứ mệnh, là triết lý, chiến lược. luôn cùng Mật Xinh tiến bước.
+                    </h4>
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram Section End -->
+<!-- Latest Blog Section Begin -->
+<section class="latest spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    @*<span>Tin mới nhất</span>*@
+                    <h2>TIN MỚI NHẤT</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model.TinTucs)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic set-bg" data-setbg="assets/img/blog/blog-1.jpg">
+                            <img src="~/images/news/@item.Thumb" />
+                        </div>
+                        <hr class="blue" style="border: 1px dashed #000; " />
+                        <br>
+                        <div class="blog__item__text">
+                            <span><img src="~/assets/img/icon/calendar.png" /> 13 June 2023</span>
+                            <h5>@item.Title</h5>
+                            <a href="#">Đọc thêm</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+
+        </div>
+    </div>
+</section>
+<!-- Latest Blog Section End -->
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(".product-name").each(function (i) {
+                var len = $(this).text().trim().length;
+                if (len > 35) {
+                    $(this).text($(this).text().substr(0, 35) + '...');
+                }
+            });
+        });
+    </script>
+
+}
+
+

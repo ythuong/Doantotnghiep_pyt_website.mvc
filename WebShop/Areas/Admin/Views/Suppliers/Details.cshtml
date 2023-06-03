@@ -1,0 +1,47 @@
+﻿@model WebShop.Models.Supplier
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Nhà Cung Cấp" + Model.Name;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="Suppliers" asp-action="Index">Danh sách nhà cung cấp</a>
+            <span class="breadcrumb-item active">Thông tin nhà cung cấp: @Model.Name</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin nhà cung cấp: @Model.Name</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.SupplierId</td>
+                    </tr>
+                    <tr>
+                        <td>Tên nhà cung cấp:</td>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td>@Model.Address</td>
+                    </tr>
+                    <tr>
+                        <td>Số lượng hàng cung cấp:</td>
+                        <td>@Model.ProductQuantity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="text-left">
+    <a class="btn btn-primary " asp-action="Index"><i class="fas fa-undo m-r-5 fa-lg"></i>Quay lại</a>
+</div>

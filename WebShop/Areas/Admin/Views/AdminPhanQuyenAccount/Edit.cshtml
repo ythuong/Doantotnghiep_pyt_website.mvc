@@ -1,0 +1,100 @@
+﻿@model WebShop.Models.Account
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminPhanQuyenAccount" asp-action="Index">Danh sách quyền truy cập</a>
+            <span class="breadcrumb-item active">Cấp quyền quyền truy cập: @Model.FullName</span>
+        </nav>
+    </div>
+</div>
+<div class="card" style="background-color: #FAEAEA">
+    <div class="card-body justi">
+        <form asp-controller="AdminPhanQuyenAccount" asp-action="Edit" asp-route-id="@Model.AccountId" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="AccountId" />
+                        <div class="form-group">
+                            <label asp-for="FullName" class="control-label">Họ và Tên</label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-semibold" for="productCategory">Phân quyền người dùng</label>
+                            <select class="custom-select" asp-for="RoleId" style="min-width: 200px;" asp-items="ViewBag.DanhMuc">
+
+                                <option value="" disabled selected>Chọn quyền</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <div class="form-group">
+                                <label asp-for="LastLogin" class="control-label">Đăng nhập lần cuối</label>
+                                <input asp-for="LastLogin" class="form-control" />
+                                <span asp-validation-for="LastLogin" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label asp-for="Phone" class="control-label">Số điện thoại</label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        @*<div class="form-group" style="display:none">
+                        <label asp-for="Salt" class="control-label"></label>
+                        <input asp-for="Salt" class="form-control" />
+                        <span asp-validation-for="Salt" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="display:none">
+                        <label asp-for="Active" class="control-label"></label>
+                        <input asp-for="Active" class="form-control" />
+                        <span asp-validation-for="Active" class="text-danger"></span>
+                        </div>*@
+                        <div class="form-group">
+                            @*<input type="submit" value="Save" class="btn btn-primary btn-tone m-r-5" />
+                            @*<a asp-action="Index">Back to List end</a>*@
+                            @*<a class="btn btn-warning btn-tone m-r-5" asp-action="Index">Quay lại</a>*@
+                            <button type="submit" class="btn btn-info btn-tone "><i class="far fa-plus-square m-r-5 fa-lg"></i>Lưu thay đổi</button>
+                            |
+                            <a class="btn btn-warning btn-tone  " asp-action="Index"><i class="fas fa-undo m-r-5 fa-lg"></i>Quay lại</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">Password</label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        <div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts    {
+    <!-- page js -->
+    <script src="~/Adminassets/vendors/select2/select2.min.js"></script>
+    <script src="~/Adminassets/vendors/quill/quill.min.js"></script>
+    <script src="~/Adminassets/js/pages/e-commerce-product-edit.js"></script>
+}
+
+

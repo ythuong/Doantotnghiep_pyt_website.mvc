@@ -1,0 +1,54 @@
+﻿@model WebShop.Models.Account
+
+@{
+    ViewData["Title"] = "Tạo mới tìa khoản quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <h2 class="header-title">Thêm tài khoản</h2>
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Danh sách tài khoản</a>
+
+        </nav>
+    </div>
+</div>
+<div class="card" style="background-color: #FAEAEA">
+    <div class="card-body">
+        <form asp-controller="AdminAccounts" asp-action="Create" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Họ và tên</label>
+                    <input type="text" class="form-control" asp-for="FullName" placeholder="Nhập họ và tên...">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Số điện thoại</label>
+                    <input type="text" class="form-control" asp-for="Phone" placeholder="Nhập số điện thoại...">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="text" class="form-control" asp-for="Email" placeholder="Nhập email...">
+                </div>
+                @*<div class="form-group col-md-6">
+                <label for="inputPassword4">Quyền truy cập</label>
+                <select class="form-control" asp-for="RoleId" asp-items="ViewBag.QuyenTruyCap" required>
+                <option value="0" disabled selected>Chọn trạng thái đơn hàng</option>
+                </select>
+                </div>*@
+            </div>
+
+            @*<div class="form-group">
+            <div class="checkbox">
+            <input asp-for="Active" type="checkbox">
+            <label for="Active">Active</label>
+            </div>
+            </div>*@
+            <button type="submit" class="btn btn-primary btn-tone m-r-5"><i class="fas fa-user-plus fa-lg m-r-5"></i>Thêm tài khoản</button>
+            <a class="btn btn-warning btn-tone m-r-5 " asp-action="Index"><i class="fas fa-undo fa-lg m-r-5"></i>Quay lại</a>
+        </form>
+    </div>
+</div>
+

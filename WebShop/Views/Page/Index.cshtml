@@ -1,0 +1,123 @@
+﻿@using PagedList.Core.Mvc;
+
+@model PagedList.Core.IPagedList<WebShop.Models.Page>
+@{
+    ViewData["Title"] = "Page Index" + ViewBag.CurrentPage;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Main Content Area -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="~/assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-4">
+                    <div class="breadcrumb-item">
+                        <a class="btn btn-link mt-3 mb-3" href="/"><i class="fas fa-home m-r-5 fa-lg"></i> Home</a>
+                        <h2 class="breadcrumb-heading">Các trang(pages) của hệ thống Mật Candy</h2> 
+                        <ul style="list-style-type: none;">
+                            <li>            
+                                <h1>Tầm nhìn và sứ mệnh </h1>
+                                <p>Canifa hướng đến mục tiêu mang lại niềm vui mặc mới mỗi ngày cho hàng triệu người tiêu dùng Việt. Chúng tôi tin rằng người dân Việt Nam cũng đang hướng đến một cuộc sống năng động, tích cực hơn.</p>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <!-- Carousel -->
+                    <!-- Carousel -->
+                    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                        <!-- Indicators/dots -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                        </div>
+
+                        <!-- The slideshow/carousel -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="~/assets/images/megamenu/1.png" style="width:auto;height:400px" alt="Los Angeles" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/assets/images/megamenu/2.png" style="width:auto;height:400px" alt="Chicago" class="d-block w-100">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/assets/images/megamenu/Mật Xinh.png" style="width:auto;height:400px" alt="New York" class="d-block w-100">
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls/icons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="blog-area blog-column-2 section-space-y-axis-100">
+        <div class="container">
+            <h2>Danh sách các Pages thuộc quyền quản lý của các cửa hàng nằm trong hệ thống <b>Mật CanDy</b></h2>
+            <div class="row">
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        string url = "";
+                        <div class="col-md-6">
+                            <div class="blog-item">
+                                <div class="blog-img img-zoom-effect">
+                                    <a href="@url">
+                                        <img class="img-full" style="width:550px;height:350px" src="~/images/pages/@item.Thumb" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                   @* <div class="blog-meta text-dim-gray pb-3">
+                                        <ul>
+                                            <li class="date"><i class="fa fa-calendar-o me-2"></i>@item.CreatedDate.Value.ToShortDateString()</li>
+                                            <li>
+                                                <span class="comments me-3">
+                                                    <a href="javascript:void(0)"></a>
+                                                </span>
+                                                <span class="link-share">
+                                                    <a href="javascript:void(0)"></a>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>*@
+                                    <h5 class="title mb-4">
+                                        <a href="@url">@item.Title</a>
+                                    </h5>
+                                    @*<p class="short-desc mb-5">@item.Scontents</p>*@
+                                    <div class="button-wrap">
+                                        <a class="btn btn-custom-size lg-size btn-dark rounded-0" href="@url">Liên hệ với Pages</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+
+                <div class="col-lg-12">
+                    <div class="pagination-area pt-10">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <pager class="page-container" list="@Model" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" asp-area="" asp-controller="Page" asp-action="Index" />
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->

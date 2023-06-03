@@ -1,0 +1,187 @@
+﻿@using WebShop.Areas.Admin.Models
+@model DashBoardViewModel
+@{
+    ViewData["Title"] = "Admin Index";
+    //Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div id="layoutSidenav">
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="m-b-0 text-muted">Tổng đơn hàng</p>
+                                        <h2 class="m-b-0">@Model.tongdh</h2>
+                                    </div>
+                                    @*                                    <span class="badge badge-pill badge-cyan font-size-12">
+                                    <i class="anticon anticon-arrow-up"></i>
+                                    <span class="font-weight-semibold m-l-5">6.71%</span>
+                                    </span>*@
+                                </div>
+                                <div class="m-t-40">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-primary badge-dot m-r-10"></span>
+                                            <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                        </div>
+                                        <span class="text-dark font-weight-semibold font-size-13">70% </span>
+                                    </div>
+                                    <div class="progress progress-sm w-100 m-b-0 m-t-10">
+                                        <div class="progress-bar bg-primary" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="m-b-0 text-muted">Đơn hàng chưa duyệt</p>
+                                        <h2 class="m-b-0">@Model.tongdhchuaduyet</h2>
+                                    </div>
+                                    @*                                    <span class="badge badge-pill badge-red font-size-12">
+                                    <i class="anticon anticon-arrow-down"></i>
+                                    <span class="font-weight-semibold m-l-5">3.26%</span>
+                                    </span>*@
+                                </div>
+                                <div class="m-t-40">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-success badge-dot m-r-10"></span>
+                                            <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                        </div>
+                                        <span class="text-dark font-weight-semibold font-size-13">60% </span>
+                                    </div>
+                                    <div class="progress progress-sm w-100 m-b-0 m-t-10">
+                                        <div class="progress-bar bg-success" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="m-b-0 text-muted">Tổng khách hàng</p>
+                                        <h2 class="m-b-0">@Model.tongnguoidung</h2>
+                                    </div>
+                                    @*<span class="badge badge-pill badge-red font-size-12">
+                                    <i class="anticon anticon-arrow-down"></i>
+                                    <span class="font-weight-semibold m-l-5">2.71%</span>
+                                    </span>*@
+                                </div>
+                                <div class="m-t-40">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-warning badge-dot m-r-10"></span>
+                                            <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                        </div>
+                                        <span class="text-dark font-weight-semibold font-size-13">45% </span>
+                                    </div>
+                                    <div class="progress progress-sm w-100 m-b-0 m-t-10">
+                                        <div class="progress-bar bg-warning" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <p class="m-b-0 text-muted">Tổng sản phẩm</p>
+                                        <h2 class="m-b-0">@Model.tongsp</h2>
+                                    </div>
+                                    @*<span class="badge badge-pill badge-gold font-size-12">
+                                        <i class="anticon anticon-arrow-up"></i>
+                                        <span class="font-weight-semibold m-l-5">N/A</span>
+                                    </span>*@
+                                </div>
+                                <div class="m-t-40">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-secondary badge-dot m-r-10"></span>
+                                            <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                        </div>
+                                        <span class="text-dark font-weight-semibold font-size-13">50% </span>
+                                    </div>
+                                    <div class="progress progress-sm w-100 m-b-0 m-t-10">
+                                        <div class="progress-bar bg-secondary" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h2><i class="fas fa-chart-bar me-1 mt-3"></i> Số lượng hàng bán</h2>
+                                <hr />
+                                <div style="width:500px; height:287px; background-color:#FFF0F5">
+                                    <div class="text-white h-30 d-inline-block p-2 bg-primary text-center" style="width:80px">Chân váy 25%</div>
+                                    <div class="text-white h-50 d-inline-block p-2 bg-warning text-center" style="width:80px">Áo thun 50%</div>
+                                    <div class="text-white h-75 d-inline-block p-2 bg-secondary text-center" style="width:80px">Sơ mi nam 75%</div>
+                                    <div class="text-white h-100 d-inline-block p-2 bg-success text-center" style="width:80px">Quần shor100%</div>
+                                    <div class="text-white h-25 d-inline-block p-2 bg-info text-center" style="width:80px">Phụ kiện 30%   </div>
+                                    <div class="text-white h-100 d-inline-block p-2 bg-danger" style="width:80px">Váy đầm 100%</div>
+                                </div>
+                            </div>
+                            <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h2><i class="fas fa-chart-bar me-1 mt-3"></i> Danh thu</h2>
+                                <hr />
+                                <table class="table">
+                                    <tr>
+                                        <td><div class="text-dark w-45  p-2 bg-info "><b>Tuần 1: </b> <i>5.000.000 VNĐ</i></div> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="text-dark w-60  p-2 bg-info"><b>Tuần 2: </b> 8.680.000 VNĐ</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="text-dark w-40   p-2 bg-info"><b>Tuần 3: </b>3.590.000 VNĐ </div> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="text-dark w-100 p-2  bg-info"><b>Tuần 4:</b> 15.965.000 VNĐ</div></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
+                        </div>
+                    </div>
+                    <div class=" px-4 px-lg-5">
+                        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                            <div class="col-lg-7">
+                                <img class="img-fluid rounded mb-4 mb-lg-0" src="~/assets/img/mainshop.png" alt="..." />
+                            </div>
+                            <div class="col-lg-5">
+                                <h1 class="font-weight-light display-2">Mật Xinh</h1>
+                                <h3><i>"Đặt sự hài lòng của khách hàng là ưu tiên số 1 trong mọi suy nghĩ hành động của mình” là sứ mệnh, là triết lý, chiến lược.. luôn cùng Mật Xinh tiến bước!"</i></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+

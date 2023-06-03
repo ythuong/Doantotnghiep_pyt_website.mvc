@@ -1,0 +1,96 @@
+﻿@model WebShop.Models.Product
+
+@{
+    ViewData["Title"] = "Thông tin sản phẩm" + Model.ProductName;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="AdminProducts" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminProducts" asp-action="Index">Danh sách sản phẩm</a>
+            <span class="breadcrumb-item active">Thông tin sản phẩm: @Model.ProductName</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin sản phẩm: @Model.ProductName</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.ProductId</td>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm:</td>
+                        <td>@Model.ProductName</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả:</td>
+                        <td>@Model.ShortDesc</td>
+                    </tr>
+                    <tr>
+                        <td>Giá bán:</td>
+                        <td>@Model.Price.Value.ToString("#,##0") VND</td>
+                    </tr>
+                    <tr>
+                        <td>Size:</td>
+                        <td>@Model.Kichco</td>
+                    </tr>
+                    <tr>
+                        <td>Discount:</td>
+                        @if (Model.Discount != 0 && Model.Discount != null)
+                        {
+                            <td>@Model.Discount.Value.ToString("#,##0") VND</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Danh mục:</td>
+                        <td>@Model.Cat.CatName</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày tạo:</td>
+                        <td>@Model.DateCreated</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày chỉnh sửa:</td>
+                        <td>@Model.DateModified</td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu đề:</td>
+                        <td>@Model.Title</td>
+                    </tr>
+                    @*<tr>
+                        <td>MetaDesc:</td>
+                        <td>@Model.MetaDesc</td>
+                    </tr>
+                    <tr>
+                        <td>MetaKey:</td>
+                        <td>@Model.MetaKey</td>
+                    </tr>*@
+                    <tr>
+                        <td>Tags:</td>
+                        <td>@Model.Tags</td>
+                    </tr>
+                    <tr>
+                        <td>Ảnh đại diện:</td>
+                        <td>
+                            <img width="200px" ; height="200px" src="~/images/products/@Model.Thumb" alt="@Model.Title" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả sản phẩm:</td>
+                        <td>@Model.Description</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="text-left">
+    <a class="btn btn-primary " asp-action="Index"><i class="fas fa-undo m-r-5 fa-lg"></i>Quay lại</a>
+</div>

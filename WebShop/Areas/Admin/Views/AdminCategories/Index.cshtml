@@ -1,0 +1,91 @@
+﻿@using PagedList.Core.Mvc;
+@model PagedList.Core.IPagedList<WebShop.Models.Category>
+@{
+    int index = 1;
+}
+@{
+    int CurrentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách danh mục" + CurrentPage;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            @*<a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Danh sách tài khoản</a>*@
+
+            <span class="breadcrumb-item active">Danh sách danh mục: Trang @CurrentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card" style="background-color:#FFF0F5">
+    <div class="card-body">
+        <h2 class="text-center">Danh sách danh mục</h2>
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+            </div>
+            <div class="col-lg-4 text-right">
+                <a class="btn btn-success" asp-controller="AdminCategories" asp-action="Create"> <i class="far fa-plus-square m-r-5 fa-lg"></i><span>Thêm danh mục</span></a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên loại</th>
+                        <th>Trạng thái</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @index
+                                </td>
+                                <td>
+                                    @item.CatName
+                                </td>
+                                <td>
+                                    @if (item.Published == true)
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-success badge-dot m-r-10"></div>
+                                            <div>Đã phát hành</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-success badge-dot m-r-10"></div>
+                                            <div>Chưa phát hành</div>
+                                        </div>
+                                    }
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Details" asp-route-id="@item.CatId"><i class="far fa-eye m-r-5 fa-lg"></i>Xem</a>
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Edit" asp-route-id="@item.CatId"><i class="far fa-edit m-r-5 fa-lg"></i>Sửa</a>
+                                    <a class="btn btn-success btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCategories" asp-action="Delete" asp-route-id="@item.CatId"><i class="far fa-trash-alt m-r-5 fa-lg"></i>Xóa</a>
+                                </td>
+                            </tr>
+                            index = index + 1;
+                        }
+                    }
+                </tbody>
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="page-container" list="@Model" options="@PagedListRenderOptions.Bootstrap4PageNumbersOnly" asp-area="Admin" asp-controller="AdminCategories" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

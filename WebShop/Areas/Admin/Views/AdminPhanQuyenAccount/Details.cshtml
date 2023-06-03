@@ -1,0 +1,82 @@
+﻿@model WebShop.Models.Account
+
+@{
+    ViewData["Title"] = "Thông tin tài khoản" + Model.FullName;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminPhanQuyenAccount" asp-action="Index">Danh sách tài khoản</a>
+
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin tài khoản: @Model.FullName</h4>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="table-responsive">
+                    <table class="product-info-table m-t-20">
+                        <tbody>
+                            <tr>
+                                <td>Mã người dùng:</td>
+                                <td class="text-dark font-weight-semibold">@Model.AccountId</td>
+
+                            </tr>
+                            <tr>
+                                <td>Họ và tên:</td>
+                                <td>@Model.FullName</td>
+                            </tr>
+                            <tr>
+                                <td>Số điện thoại:</td>
+                                <td>@Model.Phone</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <td>Password:</td>
+                                <td>@Model.Password</td>
+                            </tr>
+                            <tr>
+                                <td>Mã quyền</td>
+                                <td>@Model.RoleId</td>
+                            </tr>
+                            <tr>
+                                <td>Lần đăng nhập cuối:</td>
+                                <td>@Model.LastLogin</td>
+                            </tr>
+                            <tr>
+                                <td>Ngày tạo:</td>
+                                <td>@Model.CreateDate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md-4" style="background-color:#FFF0F5">
+                <h1 class="text-center"> TÊN QUYỀN & MÃ QUYỀN</h1>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray" />
+                <br />
+                <p>Mã quyền: 1 thuộc quyền Admin</p>
+                <p>Mã quyền: 2 thuộc nhân viên bán hàng</p>
+                <p>Mã quyền: 3 thuộc quyền khóa tài khoản</p>
+                <p>Mã quyền: 1003 thuộc quyền nhân viên kho</p>
+                <p>Mã quyền: 2004 thuộc quyền nhân viên giao hàng</p>
+                <p>Mã quyền: 2007 thuộc quyền nhân viên Sale</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="text-left">
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fas fa-undo m-r-5 fa-lg"></i>Quay lại</a>
+</div>

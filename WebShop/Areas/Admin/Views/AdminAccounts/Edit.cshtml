@@ -1,0 +1,80 @@
+﻿@model WebShop.Models.Account
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h2 class="header-title">Sửa tài khoản</h2>
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminAccounts" asp-action="Index">Danh sách tài khoản</a>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="modal-body">
+        <div class="card" style="background-color: #FAEAEA">
+            <div class="card-body justi">
+                <form asp-controller="AdminAccounts" asp-action="Edit" asp-route-id="@Model.AccountId" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form asp-action="Edit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="AccountId" />
+                                <div class="form-group ">
+                                    <label asp-for="Phone" class="control-label">Số điện thoại</label>
+                                    <input asp-for="Phone" class="form-control" />
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="form-group ">
+                                    <label asp-for="FullName" class="control-label">Họ và Tên</label>
+                                    <input asp-for="FullName" class="form-control" />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group ">
+                                    <label asp-for="CreateDate" class="control-label">Ngày tạo tài khoản</label>
+                                    <input asp-for="CreateDate" class="form-control" />
+                                    <span asp-validation-for="CreateDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-tone m-r-5" type="submit">
+                                        <i class="far fa-edit m-r-5 fa-lg"></i>
+                                        Cập nhật
+                                    </button> |
+                                    @*<a asp-action="Index">Back to List</a>*@
+                                    <a class="btn btn-warning btn-tone m-r-5" asp-action="Index"><i class="fas fa-undo m-r-5 fa-lg"></i>Quay lại</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label asp-for="Email" class="control-label">Email</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group ">
+                                <label asp-for="Password" class="control-label">Password</label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts    {
+    <!-- page js -->
+    <script src="~/Adminassets/vendors/select2/select2.min.js"></script>
+    <script src="~/Adminassets/vendors/quill/quill.min.js"></script>
+    <script src="~/Adminassets/js/pages/e-commerce-product-edit.js"></script>
+}
+
+
